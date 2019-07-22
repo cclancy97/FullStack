@@ -1,4 +1,4 @@
-<% project_name = 'FullStack' %>
+<% project_name = 'heroesAndVillains' %>
 
 default: &default
   adapter: postgresql
