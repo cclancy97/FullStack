@@ -17,7 +17,7 @@ class HerosController < ProtectedController
 
   # POST /heros
   def create
-    @hero = current_user.Hero.new(hero_params)
+    @hero = current_user.heros.new(hero_params)
 
     if @hero.save
       render json: @hero, status: :created, location: @hero
@@ -44,11 +44,11 @@ class HerosController < ProtectedController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_hero
-    @hero = current_user.Hero.find(params[:id])
+    @hero = current_user.heros.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
   def hero_params
-    params.require(:hero).permit(:name, :location, :universe)
+    params.require(:hero).permit(:name, :location, :universe, :user_id)
   end
 end
