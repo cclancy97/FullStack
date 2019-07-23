@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HerosController < OpenReadController
+class HerosController < ProtectedController
   before_action :set_hero, only: %i[show update destroy]
 
   # GET /heros
