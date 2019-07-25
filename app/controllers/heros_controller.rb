@@ -17,7 +17,7 @@ class HerosController < ProtectedController
 
   # POST /heros
   def create
-    @hero = current_user.heros.new(hero_params)
+    @hero = current_user.heros.build(hero_params)
 
     if @hero.save
       render json: @hero, status: :created, location: @hero
