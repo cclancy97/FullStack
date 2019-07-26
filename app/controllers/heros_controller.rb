@@ -5,7 +5,7 @@ class HerosController < ProtectedController
 
   # GET /heros
   def index
-    @heros = Hero.all
+    @heros = current_user.Hero.all
 
     render json: @heros
   end
