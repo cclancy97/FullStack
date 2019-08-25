@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_191410) do
+ActiveRecord::Schema.define(version: 2019_08_25_030817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2019_07_22_191410) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  create_table "villains", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "universe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_villains_on_user_id"
+  end
+
   add_foreign_key "examples", "users"
   add_foreign_key "heros", "users"
+  add_foreign_key "villains", "users"
 end
